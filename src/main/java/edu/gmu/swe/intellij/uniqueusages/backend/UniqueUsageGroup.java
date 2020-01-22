@@ -10,8 +10,8 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.*;
 
 public class UniqueUsageGroup implements UsageGroup {
-    int usageCount = 1;
     String usageDisplayed;
+    int count = 1;
 
     public UniqueUsageGroup() {
         super();
@@ -22,6 +22,11 @@ public class UniqueUsageGroup implements UsageGroup {
         this.usageDisplayed = usageDisplayed;
     }
 
+    void incrementUsageCount() {
+        count++;
+    }
+
+
     @Nullable
     @Override
     public Icon getIcon(boolean isOpen) {
@@ -31,6 +36,7 @@ public class UniqueUsageGroup implements UsageGroup {
     @NotNull
     @Override
     public String getText(@Nullable UsageView view) {
+//        return String.valueOf(count);
         return usageDisplayed;
     }
 
@@ -67,6 +73,9 @@ public class UniqueUsageGroup implements UsageGroup {
 
     @Override
     public int compareTo(@NotNull UsageGroup o) {
+        if (o instanceof UniqueUsageGroup) {
+            return this.count - ((UniqueUsageGroup) o).count;
+        }
         return 0;
     }
 }
