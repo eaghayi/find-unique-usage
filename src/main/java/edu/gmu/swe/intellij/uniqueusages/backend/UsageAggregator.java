@@ -247,7 +247,5 @@ public class UsageAggregator {
 //            return percentageSimilar;
 
         }
-
-        return usageToUniqueUsageGroup.get(key);
     }
 }
