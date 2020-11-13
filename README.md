@@ -3,6 +3,8 @@ Find Unique Usage Intellij Plugin - WIP
 
 Paper: https://arxiv.org/pdf/2005.11474.pdf
 
+DOI: https://ieeexplore.ieee.org/document/9127285
+
 
 @INPROCEEDINGS{9127285,
   author={E. {Aghayi} and A. {Massey} and T. D. {LaToza}},
