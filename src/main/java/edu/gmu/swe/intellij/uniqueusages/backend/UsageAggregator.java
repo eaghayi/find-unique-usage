@@ -11,7 +11,7 @@ import java.util.*;
 public class UsageAggregator {
 
 
-    private final static double SIMILIAR_THRESHOLD = 0.12; // lower means combine more
+    private final static double SIMILIAR_THRESHOLD = 0.15; // lower means combine more
     private List<AstSimilarityNode> astSimilarityList = new LinkedList<>();
     private Set<String> codeBlockSet = new HashSet<>();
 
@@ -24,9 +24,13 @@ public class UsageAggregator {
         UsageInfo usageInfo = ((UsageInfo2UsageAdapter) usage).getUsageInfo();
         PsiElement currentElement = usageInfo.getElement();
 
-        while (currentElement != null && !currentElement.toString().contains("PsiMethod:")) {
-            currentElement = currentElement.getContext();
-        }
+
+//        while (currentElement != null && !currentElement.toString().contains("PsiMethod:")) {
+//            currentElement = currentElement.getContext();
+//            System.out.println(currentElement.getContext().toString());
+//        }
+        currentElement = currentElement.getContext().getParent();
+//        System.out.println(currentElement.toString());
 
         PsiElement codeBlockElement = currentElement;
         CodeBlockUsage codeBlockUsage;
